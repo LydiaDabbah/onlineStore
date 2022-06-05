@@ -13,14 +13,14 @@ const [items,SetItems]=useState([])
     const Data=async()=>{
 
       try{
-        const request= await reqApi(id)
-        SetItems(request.data)
+        const {data}= await reqApi(id)
+        SetItems(data)
       }catch(error){
         setError(error.message)
       }finally{
         setLoading(false)
       }
-      
+        
     }
     Data()
   },[])

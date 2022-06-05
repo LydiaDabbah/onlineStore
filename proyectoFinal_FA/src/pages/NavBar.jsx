@@ -4,7 +4,7 @@ import { Link, Outlet } from "react-router-dom"
 function NavBar() {
   return (
     <div>
-    <nav className="navbar navbar-expand-lg navbar-light" style={{backgroundColor:"#B0A9B0"}}>
+    <nav className="navbar navbar-expand-lg navbar-light sticky-top" style={{backgroundColor:"#B0A9B0"}}>
     <div className="container-fluid">
       <a className="navbar-brand" href="#">Navbar</a>
       <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

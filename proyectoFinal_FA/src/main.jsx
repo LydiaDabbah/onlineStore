@@ -5,7 +5,7 @@ import App from './App'
 
 //styles
 import "bootstrap/dist/css/bootstrap.min.css"
-import './index.css'
+import './styles/index.css'
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(

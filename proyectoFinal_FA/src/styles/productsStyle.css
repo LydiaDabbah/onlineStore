@@ -1,0 +1,29 @@
+
+.text-trunc {
+   overflow: hidden; 
+   text-overflow: ellipsis; 
+   display: -webkit-box; 
+   -webkit-line-clamp: 2; 
+  -webkit-box-orient: vertical; }
+
+
+.imgHeight{
+  padding-bottom: 100%;
+  overflow:hidden; 
+  position:relative
+}
+
+.bodyHeight{
+  
+  font-size: .7rem;
+}
+
+.styleImage  {
+  position:absolute;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  border:.5px solid grey;
+  
+}
+
