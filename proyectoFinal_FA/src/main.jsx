@@ -7,11 +7,16 @@ import App from './App'
 import "bootstrap/dist/css/bootstrap.min.css"
 import './styles/index.css'
 
+//context
+import { ContextProvider } from './pages/context/filterContext'
+
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+     <ContextProvider>
     <BrowserRouter>
       <App />
     </BrowserRouter>
+    </ContextProvider>
   </React.StrictMode>
 )

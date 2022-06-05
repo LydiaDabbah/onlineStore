@@ -1,7 +1,20 @@
+import { useRef } from "react"
 import { Link, Outlet } from "react-router-dom"
-
+import useFilterContext from "../hooks/useFilterContext"
 
 function NavBar() {
+
+
+  const searchRef=useRef()
+  console.log(useFilterContext())
+  const {setFilterValue}=useFilterContext()
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    setFilterValue(searchRef.current.value)
+  }
+
+
   return (
     <div>
     <nav className="navbar navbar-expand-lg navbar-light sticky-top" style={{backgroundColor:"#B0A9B0"}}>
@@ -21,8 +34,8 @@ function NavBar() {
           
           
         </ul>
-        <form className="d-flex">
-          <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+        <form onSubmit={handleSubmit} className="d-flex">
+          <input ref={searchRef} className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
           <button className="btn btn-outline-dark " type="submit">Search</button>
         </form>
       </div>

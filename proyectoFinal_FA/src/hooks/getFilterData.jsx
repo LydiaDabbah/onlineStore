@@ -3,7 +3,7 @@ import { reqApi } from '../services'
 import useFilterContext from './useFilterContext'
 
 
-const getData = (id='') => {
+const getFilterData = (id='') => {
     
 const [items,SetItems]=useState([])
   const[error,setError]=useState("")
@@ -19,8 +19,12 @@ const [items,SetItems]=useState([])
 
       try{
         const {data}= await reqApi(id)
+        
+        const filterData=data.filter((product) =>
+          product.product_name.toLowerCase().includes(filterValue.toLowerCase())
+        )
 
-        SetItems(data)
+        SetItems(filterData)
       }catch(error){
         setError(error.message)
       }finally{
@@ -29,9 +33,11 @@ const [items,SetItems]=useState([])
         
     }
     Data()
-  },[])
+  },[filterValue])
 
   return {items,error,loading}
 }
 
-export default getData
+
+
+export default getFilterData
