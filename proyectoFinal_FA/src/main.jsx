@@ -5,10 +5,13 @@ import App from './App'
 
 //styles
 import "bootstrap/dist/css/bootstrap.min.css"
+import 'bootstrap-icons/font/bootstrap-icons.css'
 import './styles/index.css'
+
 
 //context
 import { ContextProvider } from './pages/context/filterContext'
+
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(

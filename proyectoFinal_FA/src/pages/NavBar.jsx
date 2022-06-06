@@ -1,6 +1,7 @@
 import { useRef } from "react"
-import { Link, Outlet } from "react-router-dom"
+import { Link, Outlet, useNavigate } from "react-router-dom"
 import useFilterContext from "../hooks/useFilterContext"
+
 
 function NavBar() {
 
@@ -9,9 +10,12 @@ function NavBar() {
   console.log(useFilterContext())
   const {setFilterValue}=useFilterContext()
 
+  const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault()
+    navigate('/home')
     setFilterValue(searchRef.current.value)
+  
   }
 
 
@@ -19,7 +23,7 @@ function NavBar() {
     <div>
     <nav className="navbar navbar-expand-lg navbar-light sticky-top" style={{backgroundColor:"#B0A9B0"}}>
     <div className="container-fluid">
-      <a className="navbar-brand" href="#">Navbar</a>
+      <a className="navbar-brand" href="#">Mi tienda</a>
       <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span className="navbar-toggler-icon" />
       </button>
@@ -34,9 +38,11 @@ function NavBar() {
           
           
         </ul>
-        <form onSubmit={handleSubmit} className="d-flex">
-          <input ref={searchRef} className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-          <button className="btn btn-outline-dark " type="submit">Search</button>
+        <form onSubmit={handleSubmit} className="d-flex" style={{backgroundColor:'white',borderRadius:'5px'}}>
+          <button  className="btn px-2 " type="submit"><i class="bi bi-search" style={{border:'none'}}></i></button>
+          <input ref={searchRef} className="form-control me-2" type="search" placeholder="Search" aria-label="Search" style={{border:'none'}}/>
+          
+    
         </form>
       </div>
     </div>

@@ -3,28 +3,25 @@ import { reqApi } from '../services'
 import useFilterContext from './useFilterContext'
 
 
-const getFilterData = (id='') => {
+const getFilterData = () => {
     
 const [items,SetItems]=useState([])
-  const[error,setError]=useState("")
-  const[loading,setLoading]=useState(true)
-
-  const {filterValue}=useFilterContext()
-
-
+const[error,setError]=useState("")
+const[loading,setLoading]=useState(true)
+const {filterValue}=useFilterContext()
 
   useEffect(()=>{
 
     const Data=async()=>{
 
       try{
-        const {data}= await reqApi(id)
+        const {data}= await reqApi()
         
         const filterData=data.filter((product) =>
           product.product_name.toLowerCase().includes(filterValue.toLowerCase())
         )
-
         SetItems(filterData)
+        
       }catch(error){
         setError(error.message)
       }finally{

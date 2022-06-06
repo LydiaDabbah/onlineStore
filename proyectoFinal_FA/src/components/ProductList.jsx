@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 const ProductList = ({items}) => {
   return (
-    <div className="App container w-75">
-    <h4 className=" pt-3 px-5">Products</h4>
-    <section className="row px-5 py-3 gy-4 ">
+    <div className="App container px-5  ">
+    
+    <section className="bg-light row gy-2 mt-5 p-2 " >
       
       {items.map((item) => (
           <div key={item._id} className="col-12 col-sm-6 col-md-4 col-lg-3">
@@ -24,7 +24,7 @@ const ProductList = ({items}) => {
                   
                 </div>
 
-                <div className="card-body p-0 bodyHeight">
+                <div className="card-body p-0 bg-light bodyHeight">
                   <p className="card-title text-trunc my-0  ">
                     <b>{item.product_name}</b>{" "}
                   </p>

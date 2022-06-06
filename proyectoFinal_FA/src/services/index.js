@@ -10,4 +10,7 @@ const reqApi = async (id='') => {
 
 }
 
+
+
 export { reqApi }
+

@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { reqApi } from '../services'
-import useFilterContext from './useFilterContext'
+
 
 
 const getData = (id='') => {
     
 const [items,SetItems]=useState([])
-  const[error,setError]=useState("")
-  const[loading,setLoading]=useState(true)
+const[error,setError]=useState("")
+const[loading,setLoading]=useState(true)
 
-  const {filterValue}=useFilterContext()
+  
 
 
 
@@ -19,7 +19,6 @@ const [items,SetItems]=useState([])
 
       try{
         const {data}= await reqApi(id)
-
         SetItems(data)
       }catch(error){
         setError(error.message)
