@@ -1,8 +1,11 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import ProductList from "../components/ProductList";
+import { DataContext } from "../context/dataContext";
 import getData from "../hooks/getData";
-import useFilterContext from "../hooks/useFilterContext";
+import useDataContext from "../hooks/useDataContext";
+import useFetcher from "../hooks/useFetcher";
+
 
 
 //style
@@ -10,17 +13,18 @@ import "../styles/productListStyle.css";
 
 const Products = () => {
 
-  const { items, error, loading } = getData();
-  const {filterValue}=useFilterContext()
+  //const { items, error, loading } = getData();
+  const {
+    data:items,
+    error
+  } = useFetcher('https://ecomerce-master.herokuapp.com/api/v1/item')
+  
 
   if (error) return <p>error</p>;
-  if (loading) return <p>..loading</p>;
-
-  const filterData=items.filter((product) =>
-  product.product_name.toLowerCase().includes(filterValue.toLowerCase()))
-
+  
+ 
   return (
-  <ProductList items={filterData}/>
+  <ProductList items={items}/>
   );
 };
 

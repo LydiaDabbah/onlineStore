@@ -1,25 +1,22 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
-import App from './App'
+import AppRoutes from './AppRoutes'
 
 //styles
 import "bootstrap/dist/css/bootstrap.min.css"
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import './styles/index.css'
 
-
 //context
-import { ContextProvider } from './pages/context/filterContext'
-
-
+import {DataProvider } from './context/dataContext'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-     <ContextProvider>
+     <DataProvider>
     <BrowserRouter>
-      <App />
+      <AppRoutes />
     </BrowserRouter>
-    </ContextProvider>
+    </DataProvider>
   </React.StrictMode>
 )

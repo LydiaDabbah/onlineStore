@@ -6,10 +6,10 @@ import '../styles/productStyle.css'
 const Product = () => {
 
 const {id}=useParams()
-    console.log(id)
+   
  
   const {items,error,loading}=getData(id)
-console.log(items)
+
   if(error) return<p>error</p>
   if(loading)return <p>..loading</p>
 
@@ -17,11 +17,11 @@ console.log(items)
   return (
   
         <div className=' container-fluid flex   '>
-          <div className='row gx-4 mt-5 px-2 py-3 align-items-center bg-light'style={{margin:'0 auto' , width:'80%'}}>
-            <div className='col-md-7'>
+          <div className='row gx-4 mt-4 px-2 py-3 align-items-center 'style={{margin:'0 auto' , width:'80%'}}>
+            <div className='col-md-6'>
               <img className=' img-responsive card-img-top mb-5 mb-md-0' src="https://i.etsystatic.com/21013327/r/il/f664c2/2139030529/il_1588xN.2139030529_p9uk.jpg" alt=".." />
             </div>
-            <div className='col-md-5'>
+            <div className='col-md-6'>
             <p className=' small mb-1'> SKU: {items.sku}</p>
             <h3 className='text-trunc-2 fw-bolder'>{items.product_name}</h3>
             <div className=' fs-5 mb-5'>
@@ -30,7 +30,7 @@ console.log(items)
             </div>
             <p className='text-trunc-4 small'>{items.description}</p>
             <div className='d-flex'>
-              <input id='inputQuantity' className='form-control inputsm text-center me-3' type="num"  value={1} style={{maxWidth:'3rem'}}/>
+              <input id='inputQuantity' className='form-control inputsm text-center me-3' type="num"  style={{maxWidth:'3rem'}}/>
               <button className='btn btn-outline-dark flex-shrink-0' type='button'><i className=' small bi-cart-fill me-1'> Add to Cart</i></button>
               
             </div>
