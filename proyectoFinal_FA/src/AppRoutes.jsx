@@ -13,8 +13,6 @@ import Search from './pages/Search'
 
 function AppRoutes() {
  
-
-
   return (
     <>
 

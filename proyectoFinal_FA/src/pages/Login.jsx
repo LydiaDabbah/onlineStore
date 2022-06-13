@@ -1,11 +1,32 @@
-import React from 'react'
+import { useState } from 'react'
+import {  useAuthContext } from '../context/AuthContext'
+
 import '../styles/loginStyle.css'
 
 const Login = () => {
+
+  const { loginAuth } =  useAuthContext()
+  const [error, setError] = useState(null)
+
+  const defaultValues = {
+    email: 'danylo@gmail.com',
+    password: 'gatito13'
+  }
+
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+    try {
+      await loginAuth(defaultValues)
+    } catch (error) {
+      setError('Incorrect email or password')
+    }
+  }
+
   return (
  <div className='container mt-5 ' style={{width:'450px', display: 'grid',
  gap: '2rem'}}>
-   <form  
+   <form 
+   onSubmit={handleSubmit} 
    style={{
      display: 'grid',
      gap: '1.5rem',
@@ -15,7 +36,7 @@ const Login = () => {
  >
    <div className='text-center'>
      <h3 className='m-0'>Login</h3>
-    
+    {error && <p className='m-1 text-danger'>{error}</p>}
    </div>
    <div>
      <input

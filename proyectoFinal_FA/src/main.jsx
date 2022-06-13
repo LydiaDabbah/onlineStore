@@ -10,13 +10,14 @@ import './styles/index.css'
 
 //context
 import {DataProvider } from './context/dataContext'
+import { AuthProvider } from './context/AuthContext'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-     <DataProvider>
+    <AuthProvider>
     <BrowserRouter>
       <AppRoutes />
     </BrowserRouter>
-    </DataProvider>
+   </AuthProvider>
   </React.StrictMode>
 )

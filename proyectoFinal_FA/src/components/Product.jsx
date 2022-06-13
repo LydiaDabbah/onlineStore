@@ -30,7 +30,7 @@ const {id}=useParams()
             </div>
             <p className='text-trunc-4 small'>{items.description}</p>
             <div className='d-flex'>
-              <input id='inputQuantity' className='form-control inputsm text-center me-3' type="num"  style={{maxWidth:'3rem'}}/>
+              <input id='inputQuantity' placeholder='#' className='form-control inputsm text-center me-3' type="num"  style={{maxWidth:'3rem'}}/>
               <button className='btn btn-outline-dark flex-shrink-0' type='button'><i className=' small bi-cart-fill me-1'> Add to Cart</i></button>
               
             </div>

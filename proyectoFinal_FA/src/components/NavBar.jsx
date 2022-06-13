@@ -8,13 +8,14 @@ function NavBar() {
 
   const searchRef=useRef()
  
-  const {setFilterValue}=useDataContext()
+  //const {setFilterValue}=useDataContext()
 
   const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault()
-    navigate('/search')
-    setFilterValue(searchRef.current.value)
+   // setFilterValue(searchRef.current.value)
+    navigate(`/search?q=${searchRef.current.value}`)
+    event.target.reset()
   
   }
 
@@ -40,7 +41,7 @@ function NavBar() {
         </ul>
         <form onSubmit={handleSubmit} className="d-flex" style={{backgroundColor:'white',borderRadius:'5px'}}>
           <button  className="btn px-2 " type="submit"><i className="bi bi-search" style={{border:'none'}}></i></button>
-          <input ref={searchRef} className="form-control me-2" type="search" placeholder="Search" aria-label="Search" style={{border:'none'}}/>
+          <input ref={searchRef} name='key' className="form-control me-2" type="search" placeholder="Search" aria-label="Search" style={{border:'none'}}/>
           
     
         </form>

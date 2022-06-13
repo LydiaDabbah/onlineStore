@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useParams, useRoutes, useSearchParams } from "react-router-dom";
 import ProductList from "../components/ProductList";
 import getData from "../hooks/getData";
 import useFilterContext from "../hooks/useDataContext";
+
 
 //style
 import "../styles/productListStyle.css";
@@ -10,7 +11,11 @@ import "../styles/productListStyle.css";
 const Search = () => {
 
   const { items, error, loading } = getData();
-  const {filterValue}=useFilterContext()
+  //const {filterValue}=useParams()
+  const[searchParams,setSearchParams]=useSearchParams()
+
+  const filterValue=searchParams.get('q')
+  
 
   if (error) return <p>error</p>;
   if (loading) return <p>..loading</p>;

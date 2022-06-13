@@ -24,6 +24,7 @@ const Products = () => {
   
  
   return (
+    
   <ProductList items={items}/>
   );
 };
