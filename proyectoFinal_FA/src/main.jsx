@@ -9,7 +9,6 @@ import 'bootstrap-icons/font/bootstrap-icons.css'
 import './styles/index.css'
 
 //context
-import {DataProvider } from './context/dataContext'
 import { AuthProvider } from './context/AuthContext'
 
 ReactDOM.createRoot(document.getElementById('root')).render(

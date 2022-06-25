@@ -1,0 +1,26 @@
+import { useEffect, useState } from 'react'
+import { Link, Navigate, useLocation } from 'react-router-dom'
+import { useAuthContext } from '../context/AuthContext'
+
+
+const AdminProtected= ({ children }) => {
+
+  const{authorized:user,userRole}=useAuthContext()
+  const [location, setLocation] = useState(null)
+  const { pathname } = useLocation()
+
+
+  if (userRole!=='ADMIN'){
+      if (pathname !== location) setLocation(pathname)
+      return <Navigate to='/'/>
+
+  }
+
+  if (location && pathname !== location) {
+      setLocation(null)
+      return <Navigate to={location} replace />
+    }
+  
+    return <>{children}</>
+}
+export default AdminProtected

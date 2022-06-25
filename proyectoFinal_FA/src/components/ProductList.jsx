@@ -6,7 +6,7 @@ const ProductList = ({items}) => {
     <div className="App container-fluid ">
    
     <section className="row gy-4 mt-4 px-3 " style={{margin:'0 auto' , width:'80%'}} >
-    <p>{items.length} results</p>
+    <p className='m-0'>{items.length} results</p>
       {items.map((item) => (
           <div key={item._id} className="col-12 col-sm-6 col-md-4 col-lg-3">
             <Link
@@ -18,7 +18,7 @@ const ProductList = ({items}) => {
                 
                   <img
                     className="card-img-top styleImage"
-                    src="https://i.etsystatic.com/21013327/r/il/f664c2/2139030529/il_1588xN.2139030529_p9uk.jpg"
+                    src="https://i.etsystatic.com/21013327/r/il/f664c2/2139030529/il_1588xN.2139030529_p9uk.jpg"//{item.image ||"https://i.etsystatic.com/21013327/r/il/f664c2/2139030529/il_1588xN.2139030529_p9uk.jpg"}
                     alt={item.product_name}
                   />
                   
