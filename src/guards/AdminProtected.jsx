@@ -5,12 +5,12 @@ import { useAuthContext } from '../context/AuthContext'
 
 const AdminProtected= ({ children }) => {
 
-  const{authorized:user,userRole}=useAuthContext()
+  const{authorized:user}=useAuthContext()
   const [location, setLocation] = useState(null)
   const { pathname } = useLocation()
 
 
-  if (userRole!=='ADMIN'){
+  if (window.localStorage.role!=='ADMIN'){
       if (pathname !== location) setLocation(pathname)
       return <Navigate to='/'/>
 
