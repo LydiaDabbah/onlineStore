@@ -13,6 +13,7 @@ import LoginProtected from "./guards/loginProtected";
 import AdminProtected from "./guards/AdminProtected";
 import AdminPanel from "./pages/AdminPanel";
 
+
 function AppRoutes() {
   return (
     <>
@@ -26,7 +27,7 @@ function AppRoutes() {
           <Route path="about" element={<p>About</p>}></Route>
           <Route path="login" element={<Login />}></Route>
           <Route path="signup" element={<SignUp />}></Route>
-          <Route path="cart" element={<LoginProtected><Cart/></LoginProtected>}></Route>
+          <Route path="cart" element={<Cart/>}></Route>
           <Route path="signup" element={<SignUp />}></Route>
           <Route path="user" element={<User/>}></Route>
           <Route path="admin" element={<AdminProtected><AdminPanel/></AdminProtected>}></Route>
