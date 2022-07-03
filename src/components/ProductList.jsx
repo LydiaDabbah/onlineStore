@@ -18,7 +18,7 @@ const ProductList = ({items}) => {
                 
                   <img
                     className="card-img-top styleImage"
-                    src="https://i.etsystatic.com/21013327/r/il/f664c2/2139030529/il_1588xN.2139030529_p9uk.jpg"//{item.image ||"https://i.etsystatic.com/21013327/r/il/f664c2/2139030529/il_1588xN.2139030529_p9uk.jpg"}
+                    src={item.image ||"https://i.etsystatic.com/21013327/r/il/f664c2/2139030529/il_1588xN.2139030529_p9uk.jpg"}
                     alt={item.product_name}
                   />
                   
