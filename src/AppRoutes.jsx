@@ -9,12 +9,13 @@ import SignUp from "./pages/SignUp";
 import Cart from "./pages/Cart";
 import User from "./pages/User";
 import NavBar from "./components/NavBar";
-import LoginProtected from "./guards/loginProtected";
-import AdminProtected from "./guards/AdminProtected";
+import LoginProtected from "./guards/LoginProtected"
+import AdminProtected from "./guards/AdminProtected"
 import AdminPanel from "./pages/AdminPanel";
 
 
 function AppRoutes() {
+
   return (
     <>
      <NavBar/>
