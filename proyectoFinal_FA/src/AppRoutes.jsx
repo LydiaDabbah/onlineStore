@@ -23,7 +23,7 @@ function AppRoutes() {
           <Route path="products" element={<Products />}></Route>
           <Route path="search" element={<Search />}></Route>
           <Route path="product/:id" element={<Product />}></Route>
-          <Route path="about" element={<AdminProtected><p>About</p></AdminProtected>}></Route>
+          <Route path="about" element={<p>About</p>}></Route>
           <Route path="login" element={<Login />}></Route>
           <Route path="signup" element={<SignUp />}></Route>
           <Route path="cart" element={<LoginProtected><Cart/></LoginProtected>}></Route>

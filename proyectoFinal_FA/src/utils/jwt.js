@@ -23,4 +23,12 @@ const setSession = (token) => {
   }
 }
 
-export { isValidToken, setSession }
+const setRole=(role)=>{
+  if (role) {
+    window.localStorage.setItem('role', role)
+  } else {
+    window.localStorage.removeItem('role')
+  }
+}
+
+export { isValidToken, setSession,setRole }

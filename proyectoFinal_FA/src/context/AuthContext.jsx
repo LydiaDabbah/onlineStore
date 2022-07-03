@@ -1,15 +1,18 @@
 import axios from "axios";
 import { useState, useContext, createContext, useEffect } from "react";
-import { reqAllUsers, reqUserData } from "../services";
-import { isValidToken, setSession } from "../utils/jwt";
+import { reqUserData } from "../services";
+import { isValidToken, setRole, setSession } from "../utils/jwt";
 const AuthContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
-  const [authorized, setAuthorized] = useState(false);
+  const [authorized, setAuthorized] = useState(()=>{
+    const token = window.localStorage.token || ''
+    return !!(token && isValidToken(token))
+  });
 
   const [init, setInit] = useState(false); // para ver si se actualizam
   const [userData, setUserData] = useState(null);
-  const[userRole,setUserRole]=useState('')
+
 
   const loginAuth = async ({ email, password }) => {
     const response = await axios.post(
@@ -23,16 +26,16 @@ const AuthProvider = ({ children }) => {
     const user = response.data;
 
     setSession(user.token); // se guarda en local_storage
+    setRole(user.role)
     setAuthorized(true);
-    setUserRole('ADMIN')
     console.log("inicio de sesión correcto");
   };
 
   const logoutAuth = () => {
-    window.localStorage.removeItem("token");
+    window.localStorage.removeItem("token")
+    window.localStorage.removeItem("role");
     setAuthorized(false);
     setUserData(null)
-    setUserRole('')
     console.log("sesion terminada");
   };
 
@@ -45,10 +48,26 @@ const AuthProvider = ({ children }) => {
     }
   };
 
+  const signUp=async({first_name,last_name,birth_date,gender,email,password})=>{
+
+      const response = await axios.post(
+        "https://ecomerce-master.herokuapp.com/api/v1/signup",
+        {
+          first_name,
+          last_name,
+          birth_date,
+          gender,
+          email,
+          password,
+        }
+      );
+
+    }
+  
+/*
   const getAllUsers = async (token) => {
     try {
       const data = await reqAllUsers(token);
-      console.log(data);
     } catch (e) {
       console.log(e);
     }
@@ -62,32 +81,33 @@ const AuthProvider = ({ children }) => {
     getData();
   }
   }, [authorized]);
-
+*/
 
   useEffect(() => {
     const token = window.localStorage.getItem("token");
+    const role=window.localStorage.getItem("role")
+   
     setInit(true);
 
     try {
       if (token && isValidToken(token)) {
         setSession(token);
+        if(role)setRole(role)
         setAuthorized(true);
-        setUserRole('ADMIN')
-        console.log("sesión activa");
+        console.log("sesión activa",role);
 
       } else {
         console.log("no hay sesión");
         setAuthorized(false);
         setUserData(null)
-        setUserRole('')
       }
+     
+        
     } catch (error) {
       console.log("catch error");
       setAuthorized(false);
     }
-
-    
-    
+ 
   }, []);
 
   const initialValues = {
@@ -96,8 +116,8 @@ const AuthProvider = ({ children }) => {
     logoutAuth,
     userData,
     getUserData,
-    getAllUsers,
-    userRole
+    signUp,
+
   };
 
   return (

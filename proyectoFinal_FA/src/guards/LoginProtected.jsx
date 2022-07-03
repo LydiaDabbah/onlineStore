@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { Navigate, useLocation } from 'react-router-dom'
 import { useAuthContext } from '../context/AuthContext'
@@ -15,6 +15,8 @@ const LoginProtected = ({children}) => {
     console.log()
     
 //    if (!init) return <p>...loading</p>
+
+  
 
     if (!user){
         if (pathname !== location) setLocation(pathname)

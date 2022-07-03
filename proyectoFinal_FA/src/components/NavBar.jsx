@@ -6,9 +6,13 @@ import { Link } from "react-router-dom";
 import { useAuthContext } from "../context/AuthContext";
 import SearchInput from "./SearchInput";
 
+
 const NavBar = () => {
   const [isNavCollapsed, setIsNavCollapsed] = useState(true);
   const handleNavCollapse = () => setIsNavCollapsed(!isNavCollapsed);
+
+  const [dropdown, setDropdown] = useState(false);
+  const toggleOpen = () => setDropdown(!dropdown);
 
   const [displayInputBar, setDisplayInputBar] = useState(false);
   const {
@@ -16,7 +20,6 @@ const NavBar = () => {
     logoutAuth,
     getUserData,
     userData,
-    userRole
   } = useAuthContext();
 
   const logoutHandler = async () => {
@@ -24,20 +27,19 @@ const NavBar = () => {
   };
 
   useEffect(() => {
-    if(user){
-    const getData = async () => {
-      await getUserData(window.localStorage.token);
-    };
-    getData();
-  }
+    if (user) {
+      const getData = async () => {
+        await getUserData(window.localStorage.token);
+      };
+      getData();
+    }
   }, [user]);
-
 
   return (
     <div className="sticky-top">
       <nav
         className="navbar navbar-expand-lg navbar-light"
-        style={{ backgroundColor: "#B0A9B0" , fontSize:"1.1rem"}}
+        style={{ backgroundColor: "#B0A9B0", fontSize: "1.1rem" }}
       >
         <a className="navbar-brand d-lg-none" href="#">
           <img
@@ -78,15 +80,14 @@ const NavBar = () => {
                 About
               </Link>
             </li>
-            {userRole==='ADMIN'&&
-               <li className="nav-item">
-               <Link className="nav-link active" to="/admin">
-                Admin Panel
-               </Link>
-             </li>
-            }
-           
-     
+            {window.localStorage.role === "ADMIN" && (
+              <li className="nav-item">
+                <Link className="nav-link active" to="/admin">
+                  Admin Panel
+                </Link>
+              </li>
+            )}
+
             <a
               className="navbar-brand d-none d-lg-flex justify-content-center flex-grow-1 "
               href="#"
@@ -98,17 +99,14 @@ const NavBar = () => {
                 style={{ width: "100px" }}
               />
             </a>
-         
+
             <li className="nav-item ">
               <a
                 href="#"
                 className="nav-link active"
                 onClick={() => setDisplayInputBar(!displayInputBar)}
               >
-                <i
-                  className="bi bi-search text-black "
-                  
-                ></i>
+                <i className="bi bi-search text-black "></i>
               </a>
             </li>
             <li className="nav-item">
@@ -119,24 +117,16 @@ const NavBar = () => {
                   className="nav-link active"
                   to="/login"
                 >
-                  
-                  
-                    {
-                      <p style={{ margin:0}}>
-                        <i
-                    className="bi bi-box-arrow-right"
-                   
-                  ></i> {userData ? `Hi, ${userData.data.user.first_name}` : ""}
-                      </p>
-                    }
-                
+                  {
+                    <p style={{ margin: 0 }}>
+                      <i className="bi bi-box-arrow-right"></i>{" "}
+                      {userData ? `Hi, ${userData.data.user.first_name}` : ""}
+                    </p>
+                  }
                 </a>
               ) : (
                 <Link href="#" className="nav-link active" to="/login">
-                  <i
-                    className="bi bi-person text-black "
-
-                  ></i>
+                  <i className="bi bi-person text-black "></i>
                 </Link>
               )}
             </li>
