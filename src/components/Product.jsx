@@ -19,7 +19,7 @@ const Product = () => {
   } = useAuthContext();
 
   const navigate=useNavigate()
- 
+ //"https://i.etsystatic.com/21013327/r/il/f664c2/2139030529/il_1588xN.2139030529_p9uk.jpg"
 
   return (
     <div className=" container-fluid flex   ">
@@ -30,7 +30,7 @@ const Product = () => {
         <div className="col-md-6">
           <img
             className=" img-responsive card-img-top mb-5 mb-md-0"
-            src="https://i.etsystatic.com/21013327/r/il/f664c2/2139030529/il_1588xN.2139030529_p9uk.jpg"
+            src= {items.image} 
             alt=".."
           />
         </div>
